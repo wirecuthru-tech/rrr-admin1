@@ -1,0 +1,39 @@
+body {
+    background: #f3e8ff !important;
+}
+
+.card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.15);
+}
+
+.btn {
+    transition: 0.3s;
+}
+
+.btn:hover,
+.btn:active {
+    box-shadow: 0 0 18px #c084fc;
+    transform: translateY(-1px);
+}
+
+.menu-link:hover,
+.submenu a:hover {
+    background: rgba(255,255,255,0.18) !important;
+    box-shadow: 0 0 18px #c084fc;
+    border-radius: 12px;
+}
+
+.sidebar {
+    background: linear-gradient(180deg, #8b5cf6, #4c1d95) !important;
+}
+
+.topbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid #eadcff;
+}
+
+.table-dark th {
+    background: #7c3aed !important;
+}
