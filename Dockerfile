@@ -21,14 +21,11 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 # Copy all code
 COPY . /var/www
 
-# Finish setup
-RUN cp .env.example .env \
-    && php artisan key:generate \
-    && composer dump-autoload --optimize \
-    && php artisan package:discover --ansi
+# Finish setup - NO .env and NO key:generate here
+RUN composer dump-autoload --optimize && \
+    php artisan package:discover --ansi && \
+    chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
-
-EXPOSE 8000
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# Use Render's PORT env var
+EXPOSE 10000
+CMD ["sh", "-c", "php artisan config:cache && php artisan serve --host=0.0.0.0 --port=$PORT"]
